@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color: rgba(6, 36, 42, 255);">
+    <div class="mt-2" style="width: 97%; margin-left: 1.5%;">
+      <div class="">
+        <button class="btn-outline-warning rounded">
+          Sample</button
+        >
+        <button class="btn-outline-warning ml-5 rounded">
+          Sample
+        </button>
+      </div>
+      <div class="mid_section text-info mt-4">
+        <p>
+          Total Rules <span class="total_rules">0</span> || Active Rules
+          <span class="active_rules">0</span>
+        </p>
+      </div>
+      <h3 class="text-white">Active Rules</h3>
+      <div class="rounded mb-3" style="border: 2px solid white;   min-height: 70vh;">
+        <div class="m-1 p-2" style="position: sticky;">
+          <button
+            onclick="loadData('comments')"
+            class="btn-outline-info rounded"
+            id="rule1"
+          >
+            Rules 1</button
+          ><button 
+          onclick="loadData('users')"
+          class="btn-outline-info ml-5 rounded">
+            Rules 2
+          </button>
+        </div>
+        <div class="container-fluid">
+          <div id="mainDiv" class="row" style="text-align: center;"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const loadData = (id) => {
+      document.getElementById("mainDiv").innerHTML = "";
+      fetch(`https://jsonplaceholder.typicode.com/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          data.map((element) => {
+            const mainDiv = document.getElementById("mainDiv");
+            const subDiv = document.createElement("subDiv");
+            const divElements = `<div style="background-color: black; width: 100%;" class="text-white h-100 rounded p-3">
+                                        <h6>${element.name}</h6>
+                                        <p style='overflow: hidden;'>${element.email}</p></div>`;
+            subDiv.innerHTML = divElements;
+            subDiv.className = 'col-md-4 col-lg-3 col-12 mb-3'
+            mainDiv.appendChild(subDiv);
+          });
+        });
+    };
+  </script>
+</html>
