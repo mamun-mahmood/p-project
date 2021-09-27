@@ -16,8 +16,8 @@
     <div class="mt-2" style="width: 97%; margin-left: 1.5%;">
       <div class="">
         <button class="btn-outline-warning rounded">
-          Sample</button
-        >
+          Sample
+        </button>
         <button class="btn-outline-warning ml-5 rounded">
           Sample
         </button>
@@ -29,43 +29,83 @@
         </p>
       </div>
       <h3 class="text-white">Active Rules</h3>
-      <div class="rounded mb-3" style="border: 2px solid white;   min-height: 70vh;">
+      <div
+        class="rounded mb-3"
+        style="border: 2px solid white; min-height: 70vh;"
+      >
         <div class="m-1 p-2" style="position: sticky;">
           <button
-            onclick="loadData('comments')"
+            onclick="loadData('rule1Content')"
             class="btn-outline-info rounded"
             id="rule1"
           >
             Rules 1</button
-          ><button 
-          onclick="loadData('users')"
-          class="btn-outline-info ml-5 rounded">
+          ><button
+            onclick="loadData('rule2Content')"
+            class="btn-outline-info ml-5 rounded"
+          >
             Rules 2
           </button>
         </div>
         <div class="container-fluid">
-          <div id="mainDiv" class="row" style="text-align: center;"></div>
+          <div id="rule1Content" style="display: none;">
+            <div id="mainDiv" class="row" style="text-align: center;">
+              <div class="col-md-4 col-lg-3 col-12 mb-3">
+                <div
+                  style="background-color: black; width: 100%;"
+                  class="text-white h-100 rounded p-3"
+                >
+                  <h6>Dummy name rule 1</h6>
+                  <p style="overflow: hidden;">Dummy email rule 1</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-3 col-12 mb-3">
+                <div
+                  style="background-color: black; width: 100%;"
+                  class="text-white h-100 rounded p-3"
+                >
+                  <h6>Dummy name rule 1</h6>
+                  <p style="overflow: hidden;">Dummy email rule 1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="rule2Content" style="display: none;">
+            <div id="mainDiv" class="row" style="text-align: center;">
+              <div class="col-md-4 col-lg-3 col-12 mb-3">
+                <div
+                  style="background-color: black; width: 100%;"
+                  class="text-white h-100 rounded p-3"
+                >
+                  <h6>Dummy name Rule 2</h6>
+                  <p style="overflow: hidden;">Dummy email Rule 2</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-3 col-12 mb-3">
+                <div
+                  style="background-color: black; width: 100%;"
+                  class="text-white h-100 rounded p-3"
+                >
+                  <h6>Dummy name Rule 2</h6>
+                  <p style="overflow: hidden;">Dummy  Rule2</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </body>
   <script>
-    const loadData = (id) => {
-      document.getElementById("mainDiv").innerHTML = "";
-      fetch(`https://jsonplaceholder.typicode.com/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          data.map((element) => {
-            const mainDiv = document.getElementById("mainDiv");
-            const subDiv = document.createElement("subDiv");
-            const divElements = `<div style="background-color: black; width: 100%;" class="text-white h-100 rounded p-3">
-                                        <h6>${element.name}</h6>
-                                        <p style='overflow: hidden;'>${element.email}</p></div>`;
-            subDiv.innerHTML = divElements;
-            subDiv.className = 'col-md-4 col-lg-3 col-12 mb-3'
-            mainDiv.appendChild(subDiv);
-          });
-        });
+    const loadData = (rule) => {
+      if(rule === 'rule1Content') {
+        document.getElementById('rule1Content').style.display = "block"
+        document.getElementById('rule2Content').style.display = "none"
+      }
+      else{
+        document.getElementById('rule1Content').style.display = "none"
+        document.getElementById('rule2Content').style.display = "block"
+      }
     };
   </script>
 </html>
