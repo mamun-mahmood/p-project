@@ -135,6 +135,9 @@ a:hover{
 .featured .icon-box:hover i, .featured .icon-box:hover h3 a, .featured .icon-box:hover p {
   color: #fff;
 }
+.trade-icon {
+  width: 50px;
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
